@@ -1,0 +1,18 @@
+<h2>Players: <%= @league %></h2>
+
+<div id="container">
+  <table class="table">
+    <tr>
+      <th>Last Name</th>
+      <th>First Name</th>
+      <th>Link</th>
+    </tr>
+    <% @athletes.each do |athlete| %>
+      <tr>
+        <td><%= athlete["lastName"] %></td>
+        <td><%= athlete["firstName"] %></td>
+        <td><%= link_to "ESPN", athlete["links"]["web"]["athletes"]["href"] %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>

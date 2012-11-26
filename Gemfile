@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'devise'
+gem 'httparty'
 gem 'jquery-rails'
 gem 'mysql2'
 gem 'rails', '3.2.8'
