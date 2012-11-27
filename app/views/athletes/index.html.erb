@@ -1,5 +1,9 @@
 <h2>Players from the <%= @league %></h2>
 
+<form id="league_form" action="<%= athletes_path %>">
+  <%= select "post", "league", Athlete.leagues, :selected => @l %>
+</form>
+
 <div id="container">
   <table class="table">
     <tr>
