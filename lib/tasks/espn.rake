@@ -11,55 +11,55 @@ namespace :espn do
     end
 
     desc "Load nfl data from the ESPN athletes api"
-    taks :nfl => :environment do
+    task :nfl => :environment do
       response = Espn.athletes "nfl"
       save_athletes(response)
     end
 
-    desc "Load cf data from the ESPN athletes api"
-    taks :cf => :environment do
+    desc "Load college football data from the ESPN athletes api"
+    task :cf => :environment do
       response = Espn.athletes "cf"
       save_athletes(response)
     end
 
-    desc "Load mcb data from the ESPN athletes api"
-    taks :mcb => :environment do
+    desc "Load men's college basketball data from the ESPN athletes api"
+    task :mcb => :environment do
       response = Espn.athletes "mcb"
       save_athletes(response)
     end
 
-    desc "Load wcb data from the ESPN athletes api"
-    taks :wcb => :environment do
+    desc "Load women's college basketball data from the ESPN athletes api"
+    task :wcb => :environment do
       response = Espn.athletes "wcb"
       save_athletes(response)
     end
 
     desc "Load nba data from the ESPN athletes api"
-    taks :nba => :environment do
+    task :nba => :environment do
       response = Espn.athletes "nba"
       save_athletes(response)
     end
 
     desc "Load wnba data from the ESPN athletes api"
-    taks :wnba => :environment do
+    task :wnba => :environment do
       response = Espn.athletes "wnba"
       save_athletes(response)
     end
 
     desc "Load mlb data from the ESPN athletes api"
-    taks :mlb => :environment do
+    task :mlb => :environment do
       response = Espn.athletes "mlb"
       save_athletes(response)
     end
 
     desc "Load pga data from the ESPN athletes api"
-    taks :pga => :environment do
+    task :pga => :environment do
       response = Espn.athletes "pga"
       save_athletes(response)
     end
 
     desc "Load nhl data from the ESPN athletes api"
-    taks :nhl => :environment do
+    task :nhl => :environment do
       response = Espn.athletes "nhl"
       save_athletes(response)
     end
