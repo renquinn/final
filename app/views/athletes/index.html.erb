@@ -1,0 +1,21 @@
+<h2>Players from the <%= @league %></h2>
+
+<div id="container">
+  <table class="table">
+    <tr>
+      <th>Last Name</th>
+      <th>First Name</th>
+      <th>Short Name</th>
+      <th>Link</th>
+    </tr>
+    <% @athletes.each do |athlete| %>
+      <tr>
+        <td><%= athlete.last_name %></td>
+        <td><%= athlete.first_name %></td>
+        <td><%= athlete.short_name %></td>
+        <td><%= link_to "ESPN Profile", athlete.espn_link %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
+
