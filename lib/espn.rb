@@ -1,6 +1,6 @@
 class Espn
   include HTTParty
-  base_uri 'api.espn.com'
+  #base_uri 'api.espn.com'
   #http://api.espn.com/:version/:resource/:method?apikey=:yourkey
 
   def self.athletes(league="nfl")
@@ -24,16 +24,21 @@ class Espn
     athletes = response.parsed_response["sports"][0]["leagues"][0]["athletes"]
     until resultsOffset >= resultsCount
     #until resultsOffset >= 100 #For debugging
+      sleep 1
       response = HTTParty.get("http://api.espn.com/v1/#{@leagues[league.to_sym]}/athletes?apikey=#{@key}&offset=#{resultsOffset}")
       if !response.parsed_response.nil?
-        response.parsed_response["sports"][0]["leagues"][0]["athletes"].each do |athlete|
-          #TODO: Find or Create a new athlete in the database
-          #Athlete.new(athlete).save
-          athletes << athlete
+        if response.parsed_response["status"] == "success"
+          response.parsed_response["sports"][0]["leagues"][0]["athletes"].each do |athlete|
+            athletes << athlete
+          end
+        else
+          puts "ERROR"
+          puts "http://api.espn.com/v1/#{@leagues[league.to_sym]}/athletes?apikey=#{@key}&offset=#{resultsOffset}"
+          puts response.parsed_response["message"]
         end
       end
       resultsOffset = response.parsed_response["resultsOffset"] + response.parsed_response["resultsLimit"]
     end
-    {:league => league_name, :athletes => athletes}
+    {:league_long => league_name, :league_short => league, :athletes => athletes}
   end
 end
