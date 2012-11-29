@@ -1,6 +1,10 @@
 class AthletesController < ApplicationController
   def index
-    @l = params["post"]["league"]
+    if params["post"]
+      @l = params["post"]["league"]
+    else
+      @l = "nfl"
+    end
     @athletes = Athlete.league(@l)
     @league = @athletes.first.league_long
   end

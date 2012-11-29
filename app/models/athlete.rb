@@ -6,9 +6,6 @@ class Athlete < ActiveRecord::Base
   def self.leagues
     [
       "nfl",
-      "cf",
-      "mcb",
-      "wcb",
       "nba",
       "wnba",
       "mlb",
