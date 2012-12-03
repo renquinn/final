@@ -1,4 +1,6 @@
 Final::Application.routes.draw do
+  resources :bugs
+
   ActiveAdmin.routes(self)
 
   devise_for :admin_users, ActiveAdmin::Devise.config

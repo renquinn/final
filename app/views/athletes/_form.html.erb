@@ -1,0 +1,41 @@
+<div class="container">
+<h1><% @athlete.user.email %></h1>
+<%= form_for(@athlete) do |f| %>
+  <% if @athlete.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@athlete.errors.count, "error") %> prohibited this athlete from being saved:</h2>
+
+      <ul>
+      <% @athlete.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="row well">
+    <div class="span4 offset1">
+      <div class="field">
+        <%= f.label :first_name %>
+        <%= f.text_field :first_name %>
+      </div>
+      <div class="field">
+        <%= f.label :last_name %>
+        <%= f.text_field :last_name %>
+      </div>
+      <div class="field">
+        <%= f.select :league_short, options_for_select(Athlete.leagues), :selected => @athlete.league_short %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="span3 offset4">
+      <div class="center actions">
+        <%= f.submit "Submit" %>
+      </div>
+    </div>
+  </div>
+<% end %>
+</div>
+

@@ -1,0 +1,19 @@
+<h1><%= "#{@athlete.full_name}" %></h1>
+
+<h3 class="center">
+  <% if can? :update, @athlete %>
+    <%= link_to 'Edit', edit_athlete_path(@athlete) %> |
+  <% end %>
+  <% if can? :destroy, @athlete %>
+    <%= link_to 'Destroy', @athlete, method: :delete, data: { confirm: "Are you sure you want to delete the athlete #{@athlete.full_name}?" } %>
+  <% end %>
+</h3>
+
+<div class="container well">
+  <b>Users:</b>
+  <ul>
+    <li>First Name: <%= @athlete.first_name %></li>
+    <li>Last Name: <%= @athlete.last_name %></li>
+  </ul>
+</div>
+

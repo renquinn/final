@@ -2,6 +2,7 @@
 
 <form id="league_form" action="<%= athletes_path %>">
   <%= select "post", "league", Athlete.leagues, :selected => @l %>
+  <%= link_to "New Athlete", new_athlete_path, :class => "pull-right" %>
 </form>
 
 <div id="container">
@@ -11,9 +12,7 @@
       <th>First Name</th>
       <th>Short Name</th>
       <th>Link</th>
-      <% if can? :update, @athletes.first %>
-        <th></th>
-      <% end %>
+      <th>Actions</th>
     </tr>
     <% @athletes.each do |athlete| %>
       <tr>
@@ -21,9 +20,17 @@
         <td><%= athlete.first_name %></td>
         <td><%= athlete.short_name %></td>
         <td><%= link_to "ESPN Profile", athlete.espn_link %></td>
-        <% if can? :update, athlete %>
-          <td><%= link_to "Edit Athlete", edit_athlete_path(athlete) %></td>
+        <td>
+        <% if can? :read, athlete %>
+          <%= link_to "Show", athlete_path(athlete) %>
         <% end %>
+        <% if can? :update, athlete %>
+          | <%= link_to "Edit", edit_athlete_path(athlete) %>
+        <% end %>
+        <% if can? :destroy, athlete %>
+           | <%= link_to "Destroy", athlete_path(athlete), :method => :delete %>
+        <% end %>
+        </td>
       </tr>
     <% end %>
   </table>
