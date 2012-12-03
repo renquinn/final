@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'activeadmin'
+gem 'cancan'
 gem 'devise'
 gem 'httparty'
 gem 'jquery-rails'

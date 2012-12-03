@@ -11,6 +11,9 @@
       <th>First Name</th>
       <th>Short Name</th>
       <th>Link</th>
+      <% if can? :update, @athletes.first %>
+        <th></th>
+      <% end %>
     </tr>
     <% @athletes.each do |athlete| %>
       <tr>
@@ -18,6 +21,9 @@
         <td><%= athlete.first_name %></td>
         <td><%= athlete.short_name %></td>
         <td><%= link_to "ESPN Profile", athlete.espn_link %></td>
+        <% if can? :update, athlete %>
+          <td><%= link_to "Edit Athlete", edit_athlete_path(athlete) %></td>
+        <% end %>
       </tr>
     <% end %>
   </table>
