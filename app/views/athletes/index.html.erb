@@ -2,7 +2,9 @@
 
 <form id="league_form" action="<%= athletes_path %>">
   <%= select "post", "league", Athlete.leagues, :selected => @l %>
-  <%= link_to "New Athlete", new_athlete_path, :class => "pull-right" %>
+  <% if current_user %>
+    <%= link_to "New Athlete", new_athlete_path, :class => "pull-right" %>
+  <% end %>
 </form>
 
 <div id="container">
