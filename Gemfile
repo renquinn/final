@@ -15,3 +15,8 @@ group :assets do
   gem 'sass-rails'
   gem 'therubyracer'
 end
+
+group :test, :development do
+  gem "rspec-rails", "~> 2.0"
+end
+
