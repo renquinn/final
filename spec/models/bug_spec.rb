@@ -9,9 +9,11 @@ describe Bug do
   it "validates uniqueness of name" do
     bug = Bug.new
     bug.name = "Clone"
+    bug.save!
 
     copy_bug = Bug.new
     copy_bug.name = "Clone"
+    copy_bug.save
     copy_bug.should have(1).error_on(:name)
   end
 
