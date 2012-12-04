@@ -24,5 +24,13 @@ describe Bug do
       Bug.my_bugs(user.id).size.should eq(1)
     end
   end
+
+  describe ".salutations" do
+    it "says hi to a bug" do
+      bug = Bug.new
+      bug.name = "Sally"
+      bug.salutations.should eq("Hello Sally")
+    end
+  end
 end
 
