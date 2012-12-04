@@ -12,5 +12,5 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require athletes.js
+//= require athletes.js.coffee
 //= require_tree .

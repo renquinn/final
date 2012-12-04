@@ -1,4 +1,4 @@
-<h2>Players from the <%= @league %></h2>
+<h2>Players</h2>
 
 <form id="league_form" action="<%= athletes_path %>">
   <%= select "post", "league", Athlete.leagues, :selected => @l %>
@@ -38,3 +38,6 @@
   </table>
 </div>
 
+<div class="ajax-loader">
+  <%= image_tag "ajax-loader.gif" %>
+</div>
