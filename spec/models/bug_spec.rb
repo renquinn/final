@@ -52,7 +52,7 @@ describe Bug do
       user.save!
 
       bug = Bug.new
-      bug.user_id = 1
+      bug.user_id = user.id
       bug.name = "Molly"
       bug.save!
 
