@@ -43,5 +43,20 @@ describe Bug do
       bug.salutations.should eq("Hello Sally")
     end
   end
+
+  describe ".master" do
+    it "returns my master's email" do
+      bug = Bug.new
+      bug.name = "Molly"
+      bug.save!
+
+      user = User.new
+      user.email = "reniscool@gmail.com"
+      user.password = "asdfersdfa"
+      user.save!
+
+      bug.master.should eq("reniscool@gmail.com")
+    end
+  end
 end
 
