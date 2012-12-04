@@ -1,5 +1,6 @@
 class Bug < ActiveRecord::Base
-  attr_accessible :name, :type, :user_id
+  attr_accessible :name, :species, :user_id
+  belongs_to :user
   validates_presence_of :name
   validates_uniqueness_of :name
   scope :my_bugs, lambda { |u| where("user_id= ?", u) }

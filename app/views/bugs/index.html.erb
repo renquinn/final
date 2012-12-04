@@ -1,27 +1,33 @@
-<h1>Listing bugs</h1>
-
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Type</th>
-    <th>User</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @bugs.each do |bug| %>
-  <tr>
-    <td><%= bug.name %></td>
-    <td><%= bug.type %></td>
-    <td><%= bug.user_id %></td>
-    <td><%= link_to 'Show', bug %></td>
-    <td><%= link_to 'Edit', edit_bug_path(bug) %></td>
-    <td><%= link_to 'Destroy', bug, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
+<h1>Bugs</h1>
 <%= link_to 'New Bug', new_bug_path %>
+
+<div id="container">
+  <table class="table">
+    <tr>
+      <th>Name</th>
+      <th>Species</th>
+      <th>User</th>
+      <th>Actions</th>
+    </tr>
+
+    <% @bugs.each do |bug| %>
+      <tr>
+        <td><%= bug.name %></td>
+        <td><%= bug.species %></td>
+        <td><%= User.find(bug.user_id).email %></td>
+        <td>
+          <% if can? :read, bug %>
+            <%= link_to 'Show', bug %>
+          <% end %>
+          <% if can? :update, bug %>
+            | <%= link_to 'Edit', edit_bug_path(bug) %>
+          <% end %>
+          <% if can? :destroy, bug %>
+            | <%= link_to 'Destroy', bug, method: :delete, data: { confirm: 'Are you sure?' } %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+</div>
+

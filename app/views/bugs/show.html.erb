@@ -6,8 +6,8 @@
 </p>
 
 <p>
-  <b>Type:</b>
-  <%= @bug.type %>
+  <b>Species:</b>
+  <%= @bug.species %>
 </p>
 
 <p>
@@ -16,5 +16,7 @@
 </p>
 
 
-<%= link_to 'Edit', edit_bug_path(@bug) %> |
+<% if can? :update, @bug %>
+  <%= link_to 'Edit', edit_bug_path(@bug) %> |
+<% end %>
 <%= link_to 'Back', bugs_path %>
