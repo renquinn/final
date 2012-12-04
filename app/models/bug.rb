@@ -7,4 +7,8 @@ class Bug < ActiveRecord::Base
   def salutations
     "Hello #{self.name}"
   end
+
+  def master
+    User.find(self.user_id).email
+  end
 end

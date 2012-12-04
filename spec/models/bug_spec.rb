@@ -46,14 +46,15 @@ describe Bug do
 
   describe ".master" do
     it "returns my master's email" do
-      bug = Bug.new
-      bug.name = "Molly"
-      bug.save!
-
-      user = User.new
+      user = User.new(:id => 1)
       user.email = "reniscool@gmail.com"
       user.password = "asdfersdfa"
       user.save!
+
+      bug = Bug.new
+      bug.user_id = 1
+      bug.name = "Molly"
+      bug.save!
 
       bug.master.should eq("reniscool@gmail.com")
     end
