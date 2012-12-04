@@ -6,6 +6,15 @@ describe Bug do
     bug.should have(1).error_on(:name)
   end
 
+  it "validates uniqueness of name" do
+    bug = Bug.new
+    bug.name = "Clone"
+
+    copy_bug = Bug.new
+    copy_bug.name = "Clone"
+    copy_bug.should have(1).error_on(:name)
+  end
+
   describe ".my_bugs" do
     it "returns only my bugs" do
       user = User.new(:id => 1)
